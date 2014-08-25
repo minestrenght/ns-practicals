@@ -10,7 +10,7 @@ class Demo {
 			val = (shift + pos) % len;
 			encode[i ++] = letters.charAt(val);
 		}
-		System.out.printf("plain=%s, encoded=%s\n", new String(plain), new String(encode));
+		System.out.printf("plain=%s, encode=%s\n", new String(plain), new String(encode));
 		char[] decode = "DEf".toLowerCase().toCharArray();
 		plain = new char[decode.length];
 		i = 0;
