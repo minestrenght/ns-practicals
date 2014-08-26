@@ -1,29 +1,29 @@
 class Demo {
 	public static void main(String[] args) {
-		char[] plain = "aBc DEf".toCharArray();
-		int i = 0, shift = 3, mod = 26;
-		char[] encode = new char[plain.length];
-        char val;
-		for(char c : plain) {
-            val = (char)((c + shift) % mod);
-            if(('A' <= val && 'Z' >= val) || ('a' <= val && 'z' >= val)) {
-                encode[i ++] = val;
-            } else {
-                encode[i ++] = c;
+        int shift = 3, mod = 26, i;
+        String actual = "";
+        String shifted = "";
+        for(char a = 'a', s = (char)(a + shift); 'z' >= a; a ++, s = (char)(a + shift)) {
+            if('z' < s) {
+                s -= 26;
             }
-		}
-		System.out.printf("plain=%s, encode=%s\n", new String(plain), new String(encode));
-		char[] decode = "dEf GHi".toCharArray();
-		plain = new char[decode.length];
-		i = 0;
-		for(char c : decode) {
-			val = (char)((c - shift) % mod);
-            if(('A' <= val && 'Z' >= val) || ('a' <= val && 'z' >= val)) {
-                plain[i ++] = val;
-            } else {
-                plain[i ++] = c;
-            }
-		}
-		System.out.printf("decode=%s, plain=%s\n", new String(decode), new String(plain));
+            actual += a;
+            shifted += s;
+        }
+
+        String plain = "Hello World !";
+        String encode = "";
+        for(char c : plain.toLowerCase().toCharArray()) {
+            i = actual.indexOf(c);
+            encode += (-1 != i ? shifted.charAt(i) : c);
+        }
+        System.out.printf("plain[%s], encode[%s]\n", plain, encode);
+
+        String decode = "";
+        for(char c : encode.toLowerCase().toCharArray()) {
+            i = shifted.indexOf(c);
+            decode += (-1 != i ? actual.charAt(i) : c);
+        }
+        System.out.printf("encode[%s], decode[%s]\n", encode, decode);
 	}
 }
