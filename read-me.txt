@@ -1,0 +1,12 @@
+# Caeser cipher, x is letter (a-z), k is shift (0-25), input/output in lower case
+	e: (x + k) mod 26
+	d: (x - k) mod 26
+
+# Modified Caeser cipher, x is letter (a-z), k is shift (0-25), input in lower case, output in upper case
+here, given that shift is 3:
+	abcdefghijklmnopqrstuvwxyz
+	XNYAHPOGZQWBTSFLRCVMUEKJDI
+
+# Mono alphabetic cipher, same as Modified Caeser cipher, letters only (a-z), but the
+shift key is random
+

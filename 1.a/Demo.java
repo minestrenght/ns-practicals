@@ -1,11 +1,11 @@
 class Demo {
 	public static void main(String[] args) {
 		char[] plain = "aBc DEf".toCharArray();
-		int i = 0, shift = 3;
+		int i = 0, shift = 3, mod = 26;
 		char[] encode = new char[plain.length];
         char val;
 		for(char c : plain) {
-            val = (char)(c + shift);
+            val = (char)((c + shift) % mod);
             if(('A' <= val && 'Z' >= val) || ('a' <= val && 'z' >= val)) {
                 encode[i ++] = val;
             } else {
@@ -17,7 +17,7 @@ class Demo {
 		plain = new char[decode.length];
 		i = 0;
 		for(char c : decode) {
-			val = (char)(c - shift);
+			val = (char)((c - shift) % mod);
             if(('A' <= val && 'Z' >= val) || ('a' <= val && 'z' >= val)) {
                 plain[i ++] = val;
             } else {
