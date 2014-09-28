@@ -11,7 +11,7 @@ public class Client {
 		System.out.println("Connected ...");
 		PrintWriter out = new PrintWriter(s.getOutputStream());//<-- sending
 		System.out.println("Sending login info ...");
-		out.println("abc");//<-- user name
+		out.println("Avinash");//<-- user name
 		out.flush();//<-- send user name
 		out.println("123");//<-- password
 		out.flush();//<-- send password

@@ -18,7 +18,7 @@ public class Server {
 		String user = in.nextLine();//<-- get user name
 		String pass = in.nextLine();//<-- get password
 		PrintWriter out = new PrintWriter(c.getOutputStream());//<-- sending
-		if("admin".equals(user) && "123".equals(pass)) {
+		if("Avinash".equals(user) && "123".equals(pass)) {
 			out.println("Success: Access Granted");
 		} else {
 			out.println("Error: Access Denied !");
