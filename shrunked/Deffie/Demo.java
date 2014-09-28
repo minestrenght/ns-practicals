@@ -1,7 +1,7 @@
 public class Demo {
 	public static void main(String[] args) {
-		double p1 = 3.0, p2 = 7.0;//prime nos.
-		double x = 6.0, y = 5.0;//symmetric values
+		double p1 = 3.0, p2 = 7.0;//prime nos, public
+		double x = 6.0, y = 8.0;//random values, private
 		double s1 = Math.pow(p1, x) % p2;
 		double s2 = Math.pow(p1, y) % p2;
 		s2 = Math.pow(s2, x) % p2;
