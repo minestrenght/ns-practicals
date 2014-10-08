@@ -1,19 +1,19 @@
 public class Demo {
 	public static void main(String[] args) throws Exception {
-		String plain = "hello world", str = "";
-        int shift = 3, ch, max = 256;
+		String plain = "hello", alpha = "abcdefghijklmnopqrstuvwxyz", str = "";
+        int shift = 4, ch, max = alpha.length();
 		System.out.printf("Original text: %s\n", plain);
 		for(char c : plain.toCharArray()) {
-            ch = (c + shift) % max;
-			str += (char)ch;
+            ch = (shift + alpha.indexOf(c)) % max;
+			str += alpha.charAt(ch);
 		}
 		System.out.printf("Encoded text: %s\n", str);
 		plain = "";
 		for(char c : str.toCharArray()) {
-			ch = (c - shift) % max;
+			ch = (alpha.indexOf(c) - shift) % max;
             if(0 > ch)
                 ch += max;
-            plain += (char)ch;
+            plain += alpha.charAt(ch);
 		}
 		System.out.printf("Decoded text: %s\n", plain);
 	}
