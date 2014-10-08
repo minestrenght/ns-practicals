@@ -1,40 +1,25 @@
 public class Demo {
+	public static String encode(String plain) {
+		int max = plain.length();
+		int col = 6, row = max/col;
+		int[] pic = {4,6,1,2,5,3};//pic columns
+		String str = "";
+		for(int i = 0, c = 0; col > i; i ++) {
+			for(int r = 0; row >= r; r ++) {
+				try {
+					str += plain.charAt(r * col + pic[i] - 1);
+				} catch (IndexOutOfBoundsException ex) {
+					//ignore this, no char found for the given index
+				}
+			}
+		}
+		return str;
+	}
 	public static void main(String[] args) {
-		String plain = "welcome", str = "";
+		String plain = "ComeHomeTomorrow";//<-- no spaces
 		System.out.printf("Original Text: %s\n", plain);
-		int row = 3, col = plain.length() / row;
-        if(0 < plain.length() % row)
-            col ++;
-        char org[][] = new char[row][col], hash = '#', tmp;
-        for(int r = 0, i = 0; row > r; r ++)
-            for(int c = 0; col > c; c ++)
-                org[r][c] = i < plain.length() ? plain.charAt(i ++) : hash;
-        for(int r = 0; row > r; r ++) {
-            for(int c = 0; col > c; c ++) {
-                if(c + 2 < col) {
-                    tmp = org[r][c];
-                    org[r][c] = org[r][c + 2];
-                    org[r][c + 2] = tmp;
-                }
-            }
-        }
-        for(int r = 0; row > r; r ++) {
-            for(int c = 0; col > c; c ++) {
-                if(r + 2 < row) {
-                    tmp = org[r][c];
-                    org[r][c] = org[r + 2][c];
-                    org[r + 2][c] = tmp;
-                }
-            }
-        }
-        for(char[] a : org)
-            str += new String(a);
-        System.out.printf("Encoded Text: %s\n", str);
-        plain = "";
-        for(int r = row - 1; 0 <= r; r --)
-            for(int c = col - 1; 0 <= c; c --)
-                if(hash != org[r][c])
-                    plain += org[r][c];
-        System.out.printf("Decoded Text: %s\n", plain);
+		plain = plain.toLowerCase();//<-- to lower case, if upper
+		String str = encode(encode(plain));//<-- two rounds
+		System.out.printf("Cipher Text: %s\n", str);
 	}
 }
